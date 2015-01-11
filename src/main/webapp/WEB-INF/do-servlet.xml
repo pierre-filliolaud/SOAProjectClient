@@ -12,13 +12,19 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
 <context:annotation-config/>
 
-<bean id="restController" class="com.myCompany.restWebService.MyController">
+	<bean id="restController" class="com.myCompany.restWebService.MyController">
 		<property name="myWebService" ref="myWebService" />
+	</bean>
+	<bean id="carRestController" class="com.myCompany.restWebService.CarController">
+		<property name="carWebService" ref="carWebService" />
 	</bean>
 	
     <jaxws:client id="myWebService"
                   serviceClass="com.myCompany.soapWebService.MyWebService"
                   address="http://localhost:8080/SOAProject/MyService" />
+	<jaxws:client id="carWebService"
+                  serviceClass="com.myCompany.soapWebService.CarWebService"
+                  address="http://localhost:8080/SOAProject/CarService" />
                   
    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
    <property name="messageConverters">
